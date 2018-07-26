@@ -11,20 +11,20 @@ import com.arturofilio.ordereatsserver.Common.Common;
 import com.arturofilio.ordereatsserver.Interface.ItemClickListener;
 import com.arturofilio.ordereatsserver.R;
 
-public class MenuViewHolder extends RecyclerView.ViewHolder implements
+public class FoodViewHolder extends RecyclerView.ViewHolder implements
         View.OnClickListener,
         View.OnCreateContextMenuListener {
 
-    public TextView txtMenuName;
-    public ImageView imageView;
+    public TextView food_name;
+    public ImageView food_image;
 
     private ItemClickListener itemClickListener;
 
-    public MenuViewHolder(@NonNull View itemView) {
+    public FoodViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        txtMenuName = (TextView) itemView.findViewById(R.id.menu_name);
-        imageView = (ImageView) itemView.findViewById(R.id.menu_image);
+        food_name = (TextView) itemView.findViewById(R.id.food_name);
+        food_image = (ImageView) itemView.findViewById(R.id.food_image);
 
         itemView.setOnCreateContextMenuListener(this);
         itemView.setOnClickListener(this);
@@ -37,14 +37,14 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements
 
     @Override
     public void onClick(View view) {
-        itemClickListener.onClick(view,getAdapterPosition(),false);
+        itemClickListener.onClick(view, getAdapterPosition(), false);
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
         contextMenu.setHeaderTitle("Select the action");
 
-        contextMenu.add(0,0,getAdapterPosition(), Common.UPDATE);
-        contextMenu.add(0,1,getAdapterPosition(), Common.DELETE);
+        contextMenu.add(0, 0, getAdapterPosition(), Common.UPDATE);
+        contextMenu.add(0, 1, getAdapterPosition(), Common.DELETE);
     }
 }
